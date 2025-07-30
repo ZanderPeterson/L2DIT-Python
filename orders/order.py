@@ -16,3 +16,7 @@ class Order():
         self.customer_name: str = customer_name
         self.item_hired: str = item_hired
         self.quantity: int = quantity
+
+        # Checking if the 'Quantity' is within the acceptable range.
+        if self.quantity < 1 or self.quantity > 500:
+            raise ValueError("Quantity must be between 1 and 500")
