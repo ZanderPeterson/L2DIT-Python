@@ -3,4 +3,6 @@
 from orders import Order
 
 # The below lines are for testing purposes.
-Order(12345, "Test 'the' Order", "mouse", 123)
+order_test = Order(12345, "Test 'the' Order", "hat", 500)
+print(order_test.get_boxes_required())
+print(order_test.get_boxes_required(126))
