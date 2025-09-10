@@ -1,6 +1,7 @@
 # Contains the "Order" class, with every instance tracking a single order.
 
 import math
+from datetime import datetime
 
 class Order():
     """
@@ -13,11 +14,15 @@ class Order():
                  receipt_num: int,
                  customer_name: str,
                  item_hired: str,
-                 quantity: int) -> None:
+                 quantity: int,
+                 start_date: datetime,
+                 end_date: datetime) -> None:
         self.receipt_num: int = receipt_num
         self.customer_name: str = customer_name
         self.item_hired: str = item_hired
         self.quantity: int = quantity
+        self.start_date: datetime = start_date
+        self.end_date: datetime = end_date
 
         # Checking if the 'Quantity' is within the acceptable range.
         if self.quantity < 1 or self.quantity > 500:
@@ -33,4 +38,19 @@ class Order():
             quantity = self.quantity
 
         return math.ceil(quantity/25)
+
+    def get_order_duration_days(self,
+                           start_date: datetime | None = None,
+                           end_date: datetime | None = None) -> int:
+        """
+        Gets the number of days the order goes for.
+        A Start date & End date can be specified, or self.start_date
+        and self.end_date will be utilised instead.
+        """
+        if not start_date:
+            start_date = self.start_date
+        if not end_date:
+            end_date = self.end_date
+
+        return (end_date - start_date).days
 
