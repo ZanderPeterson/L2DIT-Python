@@ -1,7 +1,8 @@
 # Contains the "Order" class, with every instance tracking a single order.
 
-import math
 from datetime import datetime
+import math
+import random
 
 class Order():
     """
@@ -23,6 +24,7 @@ class Order():
         self.quantity: int = quantity
         self.start_date: datetime = start_date
         self.end_date: datetime = end_date
+        self.raffle_number: int = random.randint(1, 1000)
 
         # Checking if the 'Quantity' is within the acceptable range.
         if self.quantity < 1 or self.quantity > 500:
