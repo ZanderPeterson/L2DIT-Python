@@ -28,6 +28,9 @@ class Order():
         if self.quantity < 1 or self.quantity > 500:
             raise ValueError("Quantity must be between 1 and 500")
 
+        if (self.end_date - self.start_date).days < 0:
+            raise ValueError("Start Date must be before or on End Date")
+
     def get_boxes_required(self, quantity: int | None = None) -> int:
         """
         Determines the number of boxes required for the order.

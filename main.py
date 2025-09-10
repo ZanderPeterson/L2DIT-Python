@@ -9,7 +9,7 @@ order_test = Order(777,
                    "drumsticks",
                    123,
                    datetime(2025, 9, 10),
-                   datetime(2025, 9, 11))
+                   datetime(2025, 9, 9))
 print(order_test.get_boxes_required())
 print(f"Number of boxes required: {order_test.get_boxes_required(126)}")
 print(f"Order Duration: {order_test.get_order_duration_days()} day(s)")
