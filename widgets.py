@@ -149,6 +149,7 @@ class Widget(QWidget):
 
         search_by_raffle_button = QPushButton("Search")
         search_by_raffle_layout.addWidget(search_by_raffle_button)
+        search_by_raffle_button.clicked.connect(self.search_by_raffle_function)
 
         output_order_section.addLayout(search_by_raffle_layout)
 
@@ -236,7 +237,7 @@ class Widget(QWidget):
         try:
             receipt_num_to_search = int(self.search_by_receipt_input.toPlainText())
         except ValueError:
-            QMessageBox.critical(self, "Order Input Error!",
+            QMessageBox.critical(self, "Search Input Error!",
                                  "Invalid number to search",
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
@@ -249,3 +250,21 @@ class Widget(QWidget):
             QMessageBox.warning(self, "Search Problem!",
                                 f"No match was found for {receipt_num_to_search}",
                                 QMessageBox.Ok | QMessageBox.Cancel)
+
+    def search_by_raffle_function(self):
+        try:
+            search_by_raffle_input = int(self.search_by_raffle_input.toPlainText())
+        except ValueError:
+            QMessageBox.critical(self, "Search Input Error!",
+                                 "Invalid number to search",
+                                 QMessageBox.Ok | QMessageBox.Cancel)
+            return
+
+        valid_raffle_tickets = 0
+        for order in self.orders:
+            if order.receipt_num == search_by_raffle_input:
+                valid_raffle_tickets = valid_raffle_tickets + 1
+                print("—— —— —— —— —— —— —— —— —— ——")
+                order.print_order()
+        QMessageBox.about(self, "Raffle Search Results",
+                               f"Found {valid_raffle_tickets} order(s) with the number of {search_by_raffle_input}")
