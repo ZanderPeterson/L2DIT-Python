@@ -1,6 +1,8 @@
 from datetime import datetime
 from PySide6.QtWidgets import QWidget, QLabel, QHBoxLayout, QVBoxLayout, QPushButton, QTextEdit, QMessageBox
 
+from orders import Order
+
 class Widget(QWidget):
     def __init__(self):
         super().__init__()
@@ -142,7 +144,7 @@ class Widget(QWidget):
                                  "Receipt Number is not a valid number",
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
-        
+
         try:
             order_to_check["item_quantity"] = int(order_to_check["item_quantity"])
         except ValueError:
@@ -150,5 +152,24 @@ class Widget(QWidget):
                                  "Item Quantity is not a valid number",
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
+
+        try:
+            order_test = Order(order_to_check["receipt_number"],
+                               order_to_check["name"],
+                               order_to_check["item_hired"],
+                               order_to_check["item_quantity"],
+                               order_to_check["start_date"],
+                               order_to_check["end_date"])
+        except ValueError as exception:
+            if "Quantity must be between 1 and 500" in str(exception):
+                QMessageBox.critical(self, "Order Input Error!",
+                                     "Item Quantity is between 1 and 500",
+                                     QMessageBox.Ok | QMessageBox.Cancel)
+                return
+            if "Start Date must be before or on End Date" in str(exception):
+                QMessageBox.critical(self, "Order Input Error!",
+                                     "Start Date is after End Date",
+                                     QMessageBox.Ok | QMessageBox.Cancel)
+                return
 
         print(order_to_check)
