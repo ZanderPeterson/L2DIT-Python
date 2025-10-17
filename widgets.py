@@ -47,4 +47,17 @@ class Widget(QWidget):
 
         input_order_section.addLayout(item_hired_layout)
 
+
+        #Item Quantity
+        item_quantity_layout = QHBoxLayout()
+
+        item_quantity_label = QLabel("Item Quantity:")
+        item_quantity_layout.addWidget(item_quantity_label)
+
+        item_quantity_input = QTextEdit()
+        item_quantity_input.setFixedSize(200, 20)
+        item_quantity_layout.addWidget(item_quantity_input)
+
+        input_order_section.addLayout(item_quantity_layout)
+
         self.setLayout(input_order_section)
