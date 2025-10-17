@@ -117,7 +117,7 @@ class Widget(QWidget):
         add_order_label = QLabel("<h1>Get Order(s)</h1>")
         input_order_section.addWidget(add_order_label)
 
-        print_all_button = QPushButton("Print All Stored Items")
+        print_all_button = QPushButton("Show All Orders")
         output_order_section.addWidget(print_all_button)
         print_all_button.clicked.connect(self.print_all)
 
