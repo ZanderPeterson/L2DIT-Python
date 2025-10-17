@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QWidget, QLabel, QHBoxLayout, QVBoxLayout, QPushButton, QTextEdit
+from datetime import datetime
+from PySide6.QtWidgets import QWidget, QLabel, QHBoxLayout, QVBoxLayout, QPushButton, QTextEdit, QMessageBox
 
 class Widget(QWidget):
     def __init__(self):
@@ -101,5 +102,36 @@ class Widget(QWidget):
 
         submit_order_selection_button = QPushButton("Submit")
         input_order_section.addWidget(submit_order_selection_button)
+        submit_order_selection_button.clicked.connect(self.submit_order)
 
         self.setLayout(input_order_section)
+
+    def submit_order(self):
+        try:
+            start_time = (int(self.item_start_date_input_years.toPlainText()),
+                          int(self.item_start_date_input_months.toPlainText()),
+                          int(self.item_start_date_input_days.toPlainText()))
+            end_time = (int(self.item_end_date_input_years.toPlainText()),
+                        int(self.item_end_date_input_months.toPlainText()),
+                        int(self.item_end_date_input_days.toPlainText()))
+        except ValueError:
+            QMessageBox.critical(self, "Order Input Error!",
+                                       "Dates provided are not numbers.",
+                                       QMessageBox.Ok | QMessageBox.Cancel)
+            return
+
+        try:
+            order_to_check = {
+                "receipt_number": self.receipt_number_input.toPlainText(),
+                "name": self.order_name_input.toPlainText(),
+                "item_hired": self.item_hired_input.toPlainText(),
+                "item_quantity": self.item_quantity_input.toPlainText(),
+                "start_date": datetime(start_time[0], start_time[1], start_time[2]),
+                "end_date": datetime(end_time[0], end_time[1], end_time[2])
+            }
+        except ValueError:
+            QMessageBox.critical(self, "Order Input Error!",
+                                 "Dates are invalid",
+                                 QMessageBox.Ok | QMessageBox.Cancel)
+            return
+        print(order_to_check)
