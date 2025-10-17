@@ -70,11 +70,33 @@ class Widget(QWidget):
         order_start_date_layout.addWidget(item_start_date_input_days)
 
         item_start_date_input_months = QTextEdit()
-        item_start_date_input_days.setFixedSize(50, 20)
+        item_start_date_input_months.setFixedSize(50, 20)
         order_start_date_layout.addWidget(item_start_date_input_months)
 
         item_start_date_input_years = QTextEdit()
         item_start_date_input_years.setFixedSize(50, 20)
         order_start_date_layout.addWidget(item_start_date_input_years)
+
+        input_order_section.addLayout(order_start_date_layout)
+
+        #Order End Date
+        order_end_date_layout = QHBoxLayout()
+
+        order_end_date_label = QLabel("Item End Date [DD/MM/YYYY]: ")
+        order_end_date_layout.addWidget(order_end_date_label)
+
+        item_end_date_input_days = QTextEdit()
+        item_end_date_input_days.setFixedSize(50, 20)
+        order_end_date_layout.addWidget(item_end_date_input_days)
+
+        item_end_date_input_months = QTextEdit()
+        item_end_date_input_months.setFixedSize(50, 20)
+        order_end_date_layout.addWidget(item_end_date_input_months)
+
+        item_end_date_input_years = QTextEdit()
+        item_end_date_input_years.setFixedSize(50, 20)
+        order_end_date_layout.addWidget(item_end_date_input_years)
+
+        input_order_section.addLayout(order_end_date_layout)
 
         self.setLayout(input_order_section)
