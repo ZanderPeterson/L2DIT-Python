@@ -217,13 +217,13 @@ class Widget(QWidget):
         print("—— —— —— —— —— —— —— —— —— ——")
 
     def search_by_receipt_function(self):
-        receipt_num_to_search = None
         try:
             receipt_num_to_search = int(self.search_by_receipt_input.toPlainText())
         except ValueError:
             QMessageBox.critical(self, "Order Input Error!",
                                  "Invalid number to search",
                                  QMessageBox.Ok | QMessageBox.Cancel)
+            return
 
         for order in self.orders:
             if order.receipt_num == receipt_num_to_search:
