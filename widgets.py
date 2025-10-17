@@ -108,7 +108,9 @@ class Widget(QWidget):
 
         self.setLayout(input_order_section)
 
-    def submit_order(self):
+        self.orders = []
+
+    def submit_order(self) -> None:
         try:
             start_time = (int(self.item_start_date_input_years.toPlainText()),
                           int(self.item_start_date_input_months.toPlainText()),
@@ -154,12 +156,12 @@ class Widget(QWidget):
             return
 
         try:
-            order_test = Order(order_to_check["receipt_number"],
-                               order_to_check["name"],
-                               order_to_check["item_hired"],
-                               order_to_check["item_quantity"],
-                               order_to_check["start_date"],
-                               order_to_check["end_date"])
+            created_order = Order(order_to_check["receipt_number"],
+                                  order_to_check["name"],
+                                  order_to_check["item_hired"],
+                                  order_to_check["item_quantity"],
+                                  order_to_check["start_date"],
+                                  order_to_check["end_date"])
         except ValueError as exception:
             if "Quantity must be between 1 and 500" in str(exception):
                 QMessageBox.critical(self, "Order Input Error!",
@@ -171,5 +173,6 @@ class Widget(QWidget):
                                      "Start Date is after End Date",
                                      QMessageBox.Ok | QMessageBox.Cancel)
                 return
+            return
 
-        print(order_to_check)
+        self.orders.append(created_order)
