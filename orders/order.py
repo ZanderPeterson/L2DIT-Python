@@ -59,3 +59,12 @@ class Order():
 
         return (end_date - start_date).days
 
+    def print_order(self):
+        print(f"Receipt Number: {self.receipt_num}\n" +
+              f"Customer Name:  {self.customer_name}\n" +
+              f"Item Hired:     {self.item_hired}\n" +
+              f"Item Quantity   {self.quantity} ({self.get_boxes_required()} boxes required)\n" +
+              f"Starting Date:  {self.start_date.day}/{self.start_date.month}/{self.start_date.year}\n" +
+              f"Ending Date:    {self.end_date.day}/{self.end_date.month}/{self.end_date.year}\n" +
+              f"Order Duration: {self.get_order_duration_days()} days\n" +
+              f"Raffle Number:  {self.raffle_number}")
