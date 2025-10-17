@@ -225,6 +225,7 @@ class Widget(QWidget):
                 return
             return
 
+        print(f"Order {created_order.receipt_num} successfully submitted!")
         self.orders.append(created_order)
 
     def print_all(self):
