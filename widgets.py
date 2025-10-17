@@ -65,18 +65,16 @@ class Widget(QWidget):
         order_start_date_label = QLabel("Item Start Date [DD/MM/YYYY]: ")
         order_start_date_layout.addWidget(order_start_date_label)
 
-        item_quantity_input_days = QTextEdit()
-        item_quantity_input_days.setFixedSize(50, 20)
-        order_start_date_layout.addWidget(item_quantity_input_days)
+        item_start_date_input_days = QTextEdit()
+        item_start_date_input_days.setFixedSize(50, 20)
+        order_start_date_layout.addWidget(item_start_date_input_days)
 
-        item_quantity_input_months = QTextEdit()
-        item_quantity_input_months.setFixedSize(50, 20)
-        order_start_date_layout.addWidget(item_quantity_input_months)
+        item_start_date_input_months = QTextEdit()
+        item_start_date_input_days.setFixedSize(50, 20)
+        order_start_date_layout.addWidget(item_start_date_input_months)
 
-        item_quantity_input_years = QTextEdit()
-        item_quantity_input_years.setFixedSize(50, 20)
-        order_start_date_layout.addWidget(item_quantity_input_years)
-
-        input_order_section.addLayout(order_start_date_layout)
+        item_start_date_input_years = QTextEdit()
+        item_start_date_input_years.setFixedSize(50, 20)
+        order_start_date_layout.addWidget(item_start_date_input_years)
 
         self.setLayout(input_order_section)
