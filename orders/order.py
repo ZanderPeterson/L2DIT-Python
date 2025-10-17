@@ -67,4 +67,4 @@ class Order():
               f"Starting Date:  {self.start_date.day}/{self.start_date.month}/{self.start_date.year}\n" +
               f"Ending Date:    {self.end_date.day}/{self.end_date.month}/{self.end_date.year}\n" +
               f"Order Duration: {self.get_order_duration_days()}\n" +
-              f"Raffle Number:  {self.raffle_number}\n")
+              f"Raffle Number:  {self.raffle_number}")
