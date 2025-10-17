@@ -9,6 +9,8 @@ class Widget(QWidget):
 
         self.setWindowTitle("Party Hire Store — Order Tracker")
 
+        widget_layout = QVBoxLayout()
+
         input_order_section = QVBoxLayout()
 
         add_order_label = QLabel("<h1>Create New Order</h1>")
@@ -106,7 +108,21 @@ class Widget(QWidget):
         input_order_section.addWidget(submit_order_selection_button)
         submit_order_selection_button.clicked.connect(self.submit_order)
 
-        self.setLayout(input_order_section)
+        widget_layout.addLayout(input_order_section)
+
+
+        #Output
+        output_order_section = QVBoxLayout()
+
+        add_order_label = QLabel("<h1>Get Order(s)</h1>")
+        input_order_section.addWidget(add_order_label)
+        
+        print_all_button = QPushButton("Print All Stored Items")
+        output_order_section.addWidget(print_all_button)
+
+        widget_layout.addLayout(output_order_section)
+
+        self.setLayout(widget_layout)
 
         self.orders = []
 
