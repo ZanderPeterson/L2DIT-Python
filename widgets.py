@@ -143,4 +143,12 @@ class Widget(QWidget):
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
         
+        try:
+            order_to_check["item_quantity"] = int(order_to_check["item_quantity"])
+        except ValueError:
+            QMessageBox.critical(self, "Order Input Error!",
+                                 "Item Quantity is not a valid number",
+                                 QMessageBox.Ok | QMessageBox.Cancel)
+            return
+
         print(order_to_check)
