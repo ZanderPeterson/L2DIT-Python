@@ -99,4 +99,7 @@ class Widget(QWidget):
 
         input_order_section.addLayout(order_end_date_layout)
 
+        submit_order_selection_button = QPushButton("Submit")
+        input_order_section.addWidget(submit_order_selection_button)
+
         self.setLayout(input_order_section)
