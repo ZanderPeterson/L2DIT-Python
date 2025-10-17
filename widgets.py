@@ -133,6 +133,7 @@ class Widget(QWidget):
 
         search_by_receipt_button = QPushButton("Search")
         search_by_receipt_layout.addWidget(search_by_receipt_button)
+        search_by_receipt_button.clicked.connect(self.search_by_receipt_function)
 
         output_order_section.addLayout(search_by_receipt_layout)
 
@@ -214,3 +215,21 @@ class Widget(QWidget):
             print("—— —— —— —— —— —— —— —— —— ——")
             order.print_order()
         print("—— —— —— —— —— —— —— —— —— ——")
+
+    def search_by_receipt_function(self):
+        receipt_num_to_search = None
+        try:
+            receipt_num_to_search = int(self.search_by_receipt_input.toPlainText())
+        except ValueError:
+            QMessageBox.critical(self, "Order Input Error!",
+                                 "Invalid number to search",
+                                 QMessageBox.Ok | QMessageBox.Cancel)
+
+        for order in self.orders:
+            if order.receipt_num == receipt_num_to_search:
+                order.print_order()
+                break
+        else:
+            QMessageBox.warning(self, "Search Problem!",
+                                f"No match was found for {receipt_num_to_search}",
+                                QMessageBox.Ok | QMessageBox.Cancel)
