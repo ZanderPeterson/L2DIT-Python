@@ -11,7 +11,7 @@ class Widget(QWidget):
         add_order_label = QLabel("<h1>Create New Order</h1>")
         input_order_section.addWidget(add_order_label)
 
-
+        #Receipt Number Input
         receipt_number_layout = QHBoxLayout()
 
         add_order_label = QLabel("Receipt Number:")
@@ -22,5 +22,17 @@ class Widget(QWidget):
         receipt_number_layout.addWidget(receipt_number_input)
 
         input_order_section.addLayout(receipt_number_layout)
+
+        #Order Name Input
+        order_name_layout = QHBoxLayout()
+
+        add_name_label = QLabel("Name:")
+        order_name_layout.addWidget(add_name_label)
+
+        order_name_input = QTextEdit()
+        order_name_input.setFixedSize(200, 20)
+        order_name_layout.addWidget(order_name_input)
+
+        input_order_section.addLayout(order_name_layout)
 
         self.setLayout(input_order_section)
