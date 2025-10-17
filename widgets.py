@@ -262,7 +262,7 @@ class Widget(QWidget):
 
         valid_raffle_tickets = 0
         for order in self.orders:
-            if order.receipt_num == search_by_raffle_input:
+            if order.raffle_number == search_by_raffle_input:
                 valid_raffle_tickets = valid_raffle_tickets + 1
                 print("—— —— —— —— —— —— —— —— —— ——")
                 order.print_order()
