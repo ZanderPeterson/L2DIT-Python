@@ -35,4 +35,16 @@ class Widget(QWidget):
 
         input_order_section.addLayout(order_name_layout)
 
+        #Item Hired
+        item_hired_layout = QHBoxLayout()
+
+        item_hired_label = QLabel("Item Hired:")
+        item_hired_layout.addWidget(item_hired_label)
+
+        item_hired_input = QTextEdit()
+        item_hired_input.setFixedSize(200, 20)
+        item_hired_layout.addWidget(item_hired_input)
+
+        input_order_section.addLayout(item_hired_layout)
+
         self.setLayout(input_order_section)
