@@ -18,7 +18,7 @@ class Widget(QWidget):
         receipt_number_layout.addWidget(add_order_label)
 
         receipt_number_input = QTextEdit()
-        receipt_number_input.setFixedSize(200, 20)
+        receipt_number_input.setFixedSize(200, 28)
         receipt_number_layout.addWidget(receipt_number_input)
 
         input_order_section.addLayout(receipt_number_layout)
@@ -30,7 +30,7 @@ class Widget(QWidget):
         order_name_layout.addWidget(add_name_label)
 
         order_name_input = QTextEdit()
-        order_name_input.setFixedSize(200, 20)
+        order_name_input.setFixedSize(200, 28)
         order_name_layout.addWidget(order_name_input)
 
         input_order_section.addLayout(order_name_layout)
@@ -42,7 +42,7 @@ class Widget(QWidget):
         item_hired_layout.addWidget(item_hired_label)
 
         item_hired_input = QTextEdit()
-        item_hired_input.setFixedSize(200, 20)
+        item_hired_input.setFixedSize(200, 28)
         item_hired_layout.addWidget(item_hired_input)
 
         input_order_section.addLayout(item_hired_layout)
@@ -54,7 +54,7 @@ class Widget(QWidget):
         item_quantity_layout.addWidget(item_quantity_label)
 
         item_quantity_input = QTextEdit()
-        item_quantity_input.setFixedSize(200, 20)
+        item_quantity_input.setFixedSize(200, 28)
         item_quantity_layout.addWidget(item_quantity_input)
 
         input_order_section.addLayout(item_quantity_layout)
@@ -66,15 +66,15 @@ class Widget(QWidget):
         order_start_date_layout.addWidget(order_start_date_label)
 
         item_start_date_input_days = QTextEdit()
-        item_start_date_input_days.setFixedSize(50, 20)
+        item_start_date_input_days.setFixedSize(50, 28)
         order_start_date_layout.addWidget(item_start_date_input_days)
 
         item_start_date_input_months = QTextEdit()
-        item_start_date_input_months.setFixedSize(50, 20)
+        item_start_date_input_months.setFixedSize(50, 28)
         order_start_date_layout.addWidget(item_start_date_input_months)
 
         item_start_date_input_years = QTextEdit()
-        item_start_date_input_years.setFixedSize(50, 20)
+        item_start_date_input_years.setFixedSize(50, 28)
         order_start_date_layout.addWidget(item_start_date_input_years)
 
         input_order_section.addLayout(order_start_date_layout)
@@ -86,15 +86,15 @@ class Widget(QWidget):
         order_end_date_layout.addWidget(order_end_date_label)
 
         item_end_date_input_days = QTextEdit()
-        item_end_date_input_days.setFixedSize(50, 20)
+        item_end_date_input_days.setFixedSize(50, 28)
         order_end_date_layout.addWidget(item_end_date_input_days)
 
         item_end_date_input_months = QTextEdit()
-        item_end_date_input_months.setFixedSize(50, 20)
+        item_end_date_input_months.setFixedSize(50, 28)
         order_end_date_layout.addWidget(item_end_date_input_months)
 
         item_end_date_input_years = QTextEdit()
-        item_end_date_input_years.setFixedSize(50, 20)
+        item_end_date_input_years.setFixedSize(50, 28)
         order_end_date_layout.addWidget(item_end_date_input_years)
 
         input_order_section.addLayout(order_end_date_layout)
