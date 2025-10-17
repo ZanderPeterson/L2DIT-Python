@@ -121,6 +121,21 @@ class Widget(QWidget):
         output_order_section.addWidget(print_all_button)
         print_all_button.clicked.connect(self.print_all)
 
+        #Search Tool
+        search_by_receipt_layout = QHBoxLayout()
+
+        search_by_receipt_label = QLabel("Search By Receipt:")
+        search_by_receipt_layout.addWidget(search_by_receipt_label)
+
+        self.search_by_receipt_input = QTextEdit()
+        self.search_by_receipt_input.setFixedSize(180, 28)
+        search_by_receipt_layout.addWidget(self.search_by_receipt_input)
+
+        search_by_receipt_button = QPushButton("Search")
+        search_by_receipt_layout.addWidget(search_by_receipt_button)
+
+        output_order_section.addLayout(search_by_receipt_layout)
+
         widget_layout.addLayout(output_order_section)
 
         self.setLayout(widget_layout)
