@@ -137,6 +137,22 @@ class Widget(QWidget):
 
         output_order_section.addLayout(search_by_receipt_layout)
 
+        #Search for Raffle Winner Tool
+        search_by_raffle_layout = QHBoxLayout()
+
+        search_by_raffle_label = QLabel("Search For Raffle:")
+        search_by_raffle_layout.addWidget(search_by_raffle_label)
+
+        self.search_by_raffle_input = QTextEdit()
+        self.search_by_raffle_input.setFixedSize(180, 28)
+        search_by_raffle_layout.addWidget(self.search_by_raffle_input)
+
+        search_by_raffle_button = QPushButton("Search")
+        search_by_raffle_layout.addWidget(search_by_raffle_button)
+
+        output_order_section.addLayout(search_by_raffle_layout)
+
+
         widget_layout.addLayout(output_order_section)
 
         self.setLayout(widget_layout)
