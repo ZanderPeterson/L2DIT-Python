@@ -134,4 +134,13 @@ class Widget(QWidget):
                                  "Dates are invalid",
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
+
+        try:
+            order_to_check["receipt_number"] = int(order_to_check["receipt_number"])
+        except ValueError:
+            QMessageBox.critical(self, "Order Input Error!",
+                                 "Receipt Number is not a valid number",
+                                 QMessageBox.Ok | QMessageBox.Cancel)
+            return
+        
         print(order_to_check)
