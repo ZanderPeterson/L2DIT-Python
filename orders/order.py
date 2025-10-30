@@ -47,7 +47,7 @@ class Order():
         #The following equation has been tested to meet the requirement of giving
         #the number of boxes required. At 24 boxes, one is required. 25 also one.
         #at 26 this number jumps to 2. This always gives a whole number.
-        return math.ceil(quantity/BOX_CAPACITY)
+        return math.ceil(quantity/self.BOX_CAPACITY)
 
     def get_order_duration_days(self,
                            start_date: datetime | None = None,
