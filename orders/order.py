@@ -43,6 +43,9 @@ class Order():
         if not quantity:
             quantity = self.quantity
 
+        #The following equation has been tested to meet the requirement of giving
+        #the number of boxes required. At 24 boxes, one is required. 25 also one.
+        #at 26 this number jumps to 2. This always gives a whole number.
         return math.ceil(quantity/25)
 
     def get_order_duration_days(self,
@@ -58,9 +61,10 @@ class Order():
         if not end_date:
             end_date = self.end_date
 
-        return (end_date - start_date).days
+        return (end_date - start_date).days #Gets the difference in days
 
     def print_order(self, print_deleted: bool = False):
+        """Prints all the details of the order to console"""
         if (print_deleted and self.deleted) or ((not self.deleted) and (not self.deleted)):
             print(f"Receipt Number: {self.receipt_num}\n" +
                   f"Customer Name:  {self.customer_name}\n" +

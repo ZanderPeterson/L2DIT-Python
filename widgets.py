@@ -165,6 +165,7 @@ class Widget(QWidget):
         self.orders = []
 
     def submit_order(self) -> None:
+        #This try except loop checks that the dates are numbers
         try:
             start_time = (int(self.item_start_date_input_years.toPlainText()),
                           int(self.item_start_date_input_months.toPlainText()),
@@ -178,6 +179,7 @@ class Widget(QWidget):
                                        QMessageBox.Ok | QMessageBox.Cancel)
             return
 
+        #If the dates are invalid (e.g. 30th of February), this try/except will catch that.
         try:
             order_to_check = {
                 "receipt_number": self.receipt_number_input.toPlainText(),
@@ -193,6 +195,7 @@ class Widget(QWidget):
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
 
+        #This try/except loop checks that the Receipt Number is an integer
         try:
             order_to_check["receipt_number"] = int(order_to_check["receipt_number"])
         except ValueError:
@@ -201,6 +204,7 @@ class Widget(QWidget):
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
 
+        #This try/except loop checks that the Item Quantity is an integer
         try:
             order_to_check["item_quantity"] = int(order_to_check["item_quantity"])
         except ValueError:
@@ -209,6 +213,9 @@ class Widget(QWidget):
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
 
+        #This try/except loop catches the errors that the Order class may throw.
+        #These errors include Quantity being out of the valid bounds, and the
+        #start date falling after the end date.
         try:
             created_order = Order(order_to_check["receipt_number"],
                                   order_to_check["name"],
@@ -229,16 +236,19 @@ class Widget(QWidget):
                 return
             return
 
+        #User feedback showed that there should be more feedback on hitting the "Submit" button,
+        #hence the print statement.
         print(f"Order {created_order.receipt_num} successfully submitted!")
         self.orders.append(created_order)
 
     def print_all(self):
         for order in self.orders:
-            print("—— —— —— —— —— —— —— —— —— ——")
-            order.print_order()
+            print("—— —— —— —— —— —— —— —— —— ——") #This acts to visually separate the different orders
+            order.print_order() #Calls upon a function in the Order class that prints all the relevant data.
         print("—— —— —— —— —— —— —— —— —— ——")
 
     def search_by_receipt_function(self):
+        #This try/except loop checks that the Receipt Number to Search for is an integer
         try:
             receipt_num_to_search = int(self.search_by_receipt_input.toPlainText())
         except ValueError:
@@ -247,6 +257,7 @@ class Widget(QWidget):
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
 
+        #Iterates over every order in the list and finds the matching receipt number, if one exists.
         for i, order in enumerate(self.orders):
             if order.receipt_num == receipt_num_to_search:
                 order.print_order()
@@ -257,6 +268,7 @@ class Widget(QWidget):
                                 QMessageBox.Ok | QMessageBox.Cancel)
 
     def search_by_receipt_delete_function(self):
+        #This try/except loop checks that the Receipt Number to Search for is an integer
         try:
             receipt_num_to_search = int(self.search_by_receipt_input.toPlainText())
         except ValueError:
@@ -265,10 +277,10 @@ class Widget(QWidget):
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
 
+        #Iterates over every order in the list and finds the matching receipt number, if one exists.
         for i, order in enumerate(self.orders):
             if order.receipt_num == receipt_num_to_search:
                 print(f"Deleting {order.receipt_num}...")
-                #order.print_order()
                 order.deleted = True
                 print("—— —— —— —— —— —— —— —— —— ——")
                 break
@@ -278,6 +290,7 @@ class Widget(QWidget):
                                 QMessageBox.Ok | QMessageBox.Cancel)
 
     def search_by_raffle_function(self):
+        #This try/except loop checks that the Raffle Number to Search for is an integer
         try:
             search_by_raffle_input = int(self.search_by_raffle_input.toPlainText())
         except ValueError:
@@ -286,6 +299,7 @@ class Widget(QWidget):
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
 
+        # Iterates over every order in the list and finds the matching raffle number(s), if one exists.
         valid_raffle_tickets = 0
         for order in self.orders:
             if order.raffle_number == search_by_raffle_input:
