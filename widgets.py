@@ -135,6 +135,10 @@ class Widget(QWidget):
         search_by_receipt_layout.addWidget(search_by_receipt_button)
         search_by_receipt_button.clicked.connect(self.search_by_receipt_function)
 
+        search_by_receipt_delete_button = QPushButton("Del")
+        search_by_receipt_layout.addWidget(search_by_receipt_delete_button)
+        search_by_receipt_delete_button.clicked.connect(self.search_by_receipt_delete_function)
+
         output_order_section.addLayout(search_by_receipt_layout)
 
         #Search for Raffle Winner Tool
@@ -243,9 +247,30 @@ class Widget(QWidget):
                                  QMessageBox.Ok | QMessageBox.Cancel)
             return
 
-        for order in self.orders:
+        for i, order in enumerate(self.orders):
             if order.receipt_num == receipt_num_to_search:
                 order.print_order()
+                break
+        else:
+            QMessageBox.warning(self, "Search Problem!",
+                                f"No match was found for {receipt_num_to_search}",
+                                QMessageBox.Ok | QMessageBox.Cancel)
+
+    def search_by_receipt_delete_function(self):
+        try:
+            receipt_num_to_search = int(self.search_by_receipt_input.toPlainText())
+        except ValueError:
+            QMessageBox.critical(self, "Search Input Error!",
+                                 "Invalid number to search",
+                                 QMessageBox.Ok | QMessageBox.Cancel)
+            return
+
+        for i, order in enumerate(self.orders):
+            if order.receipt_num == receipt_num_to_search:
+                print(f"Deleting {order.receipt_num}...")
+                #order.print_order()
+                order.deleted = True
+                print("—— —— —— —— —— —— —— —— —— ——")
                 break
         else:
             QMessageBox.warning(self, "Search Problem!",
