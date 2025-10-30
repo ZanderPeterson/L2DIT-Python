@@ -10,6 +10,7 @@ class Order():
     order-specific bits of information, such as start/end dates, customer
     name, receipt number, the item, the quantity, raffle info, etc. etc.
     """
+    BOX_CAPACITY: int = 25
 
     def __init__(self,
                  receipt_num: int,
@@ -46,7 +47,7 @@ class Order():
         #The following equation has been tested to meet the requirement of giving
         #the number of boxes required. At 24 boxes, one is required. 25 also one.
         #at 26 this number jumps to 2. This always gives a whole number.
-        return math.ceil(quantity/25)
+        return math.ceil(quantity/BOX_CAPACITY)
 
     def get_order_duration_days(self,
                            start_date: datetime | None = None,
