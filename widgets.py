@@ -165,6 +165,12 @@ class Widget(QWidget):
         self.orders = []
 
     def submit_order(self) -> None:
+        """
+        This function takes all the data that the user has entered, validates it,
+        and then puts it into an instance of the Order class.
+        If data is invalid, this function will give the user the appropriate
+        constructive error.
+        """
         #This try except loop checks that the dates are numbers
         try:
             start_time = (int(self.item_start_date_input_years.toPlainText()),
@@ -242,12 +248,14 @@ class Widget(QWidget):
         self.orders.append(created_order)
 
     def print_all(self):
+        """Prints every single order to the console"""
         for order in self.orders:
             print("—— —— —— —— —— —— —— —— —— ——") #This acts to visually separate the different orders
             order.print_order() #Calls upon a function in the Order class that prints all the relevant data.
         print("—— —— —— —— —— —— —— —— —— ——")
 
     def search_by_receipt_function(self):
+        """Searches through all orders to find a match for the receipt number."""
         #This try/except loop checks that the Receipt Number to Search for is an integer
         try:
             receipt_num_to_search = int(self.search_by_receipt_input.toPlainText())
@@ -268,6 +276,7 @@ class Widget(QWidget):
                                 QMessageBox.Ok | QMessageBox.Cancel)
 
     def search_by_receipt_delete_function(self):
+        """Searches through all orders to find a match for the receipt number, then deletes the matching order"""
         #This try/except loop checks that the Receipt Number to Search for is an integer
         try:
             receipt_num_to_search = int(self.search_by_receipt_input.toPlainText())
@@ -290,6 +299,10 @@ class Widget(QWidget):
                                 QMessageBox.Ok | QMessageBox.Cancel)
 
     def search_by_raffle_function(self):
+        """
+        Searches through all orders to find a match for the raffle number.
+        Multiple orders may have the winning raffle number.
+        """
         #This try/except loop checks that the Raffle Number to Search for is an integer
         try:
             search_by_raffle_input = int(self.search_by_raffle_input.toPlainText())
